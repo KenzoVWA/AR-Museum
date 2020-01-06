@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 4ea213ff141529745bd0f0972ff53db5
   - enabled: 1
+    path: Assets/Scenes/TestScene.unity
+    guid: cfca0f014f8aa8348be018de5de88da7
+  - enabled: 1
     path: Assets/Scenes/ARScene.unity
     guid: 1169583288c24804ca43476d3bd9315b
   m_configObjects: {}

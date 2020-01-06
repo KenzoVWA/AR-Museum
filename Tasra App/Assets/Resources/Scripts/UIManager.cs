@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
     public RectTransform languageMenu, menuPrincipal, mainMenu,
         instruccionesMenu, instructionsMenu, obrasMenu, artworksMenu;
 
+    public static UIManager instance;
+
+    public bool isEnglish=false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +25,14 @@ public class UIManager : MonoBehaviour
     {
         languageMenu.DOAnchorPos(new Vector2(-3100,0), 0.25f);
         menuPrincipal.DOAnchorPos(new Vector2(0, 0), 0.25f);
+        isEnglish = false;
     }
 
     public void LanguageButtonEnglish()
     {
         languageMenu.DOAnchorPos(new Vector2(-3100, 0), 0.25f)  ;
         mainMenu.DOAnchorPos(new Vector2(0, 0), 0.25f);
+        isEnglish = true;
     }
 
     public void StartItem()
@@ -37,9 +43,9 @@ public class UIManager : MonoBehaviour
 
     public void Quit()
     {
-        //Application.Quit();
         mainMenu.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
         languageMenu.DOAnchorPos(new Vector2(0, 0), 0.25f);
+        //Application.Quit(); not being used at the moment
     }
 
     public void Instructions()
@@ -54,11 +60,15 @@ public class UIManager : MonoBehaviour
         obrasMenu.DOAnchorPos(new Vector2(0, 0), 0.25f);
     }
 
+    public void RecenterEmpezar() {
+        obrasMenu.DOAnchorPos(new Vector2(0, 0), 0.25f);
+    }
+
     public void Salir()
     {
         menuPrincipal.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
         languageMenu.DOAnchorPos(new Vector2(0, 0), 0.25f);
-        //Application.Quit();
+        //Application.Quit(); not being used at the moment
     }
 
     public void Instrucciones()
@@ -93,6 +103,7 @@ public class UIManager : MonoBehaviour
 
     public void AR()
     {
-        SceneManager.LoadScene("ARScene");
+        PlayerPrefs.SetInt("SavedScene",SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("TestScene");
     }
 }
