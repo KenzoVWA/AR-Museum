@@ -5,35 +5,39 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
-
-public class UIManager : MonoBehaviour
+public class UIManagerPostAR : MonoBehaviour
 {
     public RectTransform languageMenu, menuPrincipal, mainMenu,
-        instruccionesMenu, instructionsMenu, obrasMenu, artworksMenu;
+            instruccionesMenu, instructionsMenu, obrasMenu, artworksMenu;
 
-    public static UIManager instance;
-
-    public bool isEnglish=false;
+    public static UIManagerPostAR instance;
 
     // Start is called before the first frame update
     void Start()
     {
-            instance = this;
-            languageMenu.DOAnchorPos(Vector2.zero, 0.5f);
+        if (UIManager.instance.isEnglish)
+        {
+            artworksMenu.DOAnchorPos(Vector2.zero, 0.5f);
+        }
+        else
+        {
+            obrasMenu.DOAnchorPos(Vector2.zero, 0.5f);
+        }
+        BackgroundFX.instance.Unpause();
     }
 
     public void LanguageButtonEspanol()
     {
-        languageMenu.DOAnchorPos(new Vector2(-3100,0), 0.25f);
+        languageMenu.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
         menuPrincipal.DOAnchorPos(new Vector2(0, 0), 0.25f);
-        isEnglish = false;
+        UIManager.instance.isEnglish = false;
     }
 
     public void LanguageButtonEnglish()
     {
-        languageMenu.DOAnchorPos(new Vector2(-3100, 0), 0.25f)  ;
+        languageMenu.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
         mainMenu.DOAnchorPos(new Vector2(0, 0), 0.25f);
-        isEnglish = true;
+        UIManager.instance.isEnglish = true;
     }
 
     public void StartItem()
@@ -100,7 +104,7 @@ public class UIManager : MonoBehaviour
 
     public void AR()
     {
-        //Cambiar a ARScene
+        //cambiar a ARScene
         SceneManager.LoadScene("TestScene");
     }
 }

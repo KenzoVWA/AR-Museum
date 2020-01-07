@@ -19,7 +19,7 @@ public class TestScript : MonoBehaviour
 
    public void Pushed()
    {
-        SceneManager.LoadScene("MainMenu");
-   }
+        SceneManager.LoadScene("MainScenePostAr");
+    }
 
 }
