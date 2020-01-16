@@ -27,7 +27,7 @@ public class TigerController : MonoBehaviour
 
         if (anim.GetBool("isRunning") && elapsedTime < duration)
         {
-            moveDir = new Vector3(0, 0, 1);
+            moveDir = new Vector3(1, 0, 0);
             moveDir *= speed;
             controller.Move(moveDir * Time.deltaTime);
             elapsedTime += Time.deltaTime;
