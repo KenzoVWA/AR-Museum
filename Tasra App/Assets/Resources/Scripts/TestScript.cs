@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class TestScript : MonoBehaviour
 {
-    public GameObject panel;
-    public GameObject information;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,24 +17,9 @@ public class TestScript : MonoBehaviour
 
     }
 
-    public void OpenPanel()
-    {
-        if(panel != null)
-        {
-            panel.SetActive(true);
-            information.SetActive(false);
-        }
-    }
-
-    public void ClosePanel()
-    {
-        panel.SetActive(false);
-        information.SetActive(true);
-    }
-
    public void Pushed()
    {
         SceneManager.LoadScene("MainScenePostAr");
-   }
+    }
 
 }

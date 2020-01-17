@@ -25,7 +25,7 @@ public class CrawlerController : MonoBehaviour
     void Update()
     {
         if (anim.GetBool("isRunning") && elapsedTime < 1) {
-            moveDir = new Vector3(1, 0, 0);
+            moveDir = new Vector3(0, 0,3);
             moveDir *= speed;
             controller.Move(moveDir * Time.deltaTime);
             elapsedTime += Time.deltaTime;
@@ -33,7 +33,7 @@ public class CrawlerController : MonoBehaviour
 
         else  if (anim.GetBool("isRunning") && elapsedTime < duration)
         {
-            moveDir = new Vector3(1, 0, 0);
+            moveDir = new Vector3(0, 0, 2);
             moveDir *= speed;
             controller.Move(moveDir * Time.deltaTime);
             elapsedTime += Time.deltaTime;
