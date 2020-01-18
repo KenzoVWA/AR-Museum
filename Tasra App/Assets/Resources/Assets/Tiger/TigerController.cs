@@ -5,7 +5,7 @@ using UnityEngine;
 public class TigerController : MonoBehaviour
 {
     static Animator anim;
-    CharacterController controller;
+    public CharacterController controller;
     public float speed = 1.0F;
     public float rotationSpeed = 100.0F;
     float elapsedTime = Mathf.Infinity;
@@ -16,7 +16,6 @@ public class TigerController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        controller = GetComponent<CharacterController>();
         elapsedTime = 0f;
 
     }
@@ -27,7 +26,7 @@ public class TigerController : MonoBehaviour
 
         if (anim.GetBool("isRunning") && elapsedTime < duration)
         {
-            moveDir = new Vector3(0, 0, -1);
+            moveDir = new Vector3(0, 3, 0);
             moveDir *= speed;
             controller.Move(moveDir * Time.deltaTime);
             elapsedTime += Time.deltaTime;
