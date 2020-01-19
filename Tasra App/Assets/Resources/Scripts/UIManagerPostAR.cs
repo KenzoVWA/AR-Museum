@@ -105,6 +105,7 @@ public class UIManagerPostAR : MonoBehaviour
     public void AR()
     {
         //cambiar a ARScene
+        BackgroundFX.instance.Pause();
         SceneManager.LoadScene("TestScene");
     }
 }

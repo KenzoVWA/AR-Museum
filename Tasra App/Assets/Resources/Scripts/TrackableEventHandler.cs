@@ -32,7 +32,6 @@ public class TrackableEventHandler : MonoBehaviour, ITrackableEventHandler
 
     protected virtual void Start()
     {
-        BackgroundFX.instance.Pause();
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour)
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
