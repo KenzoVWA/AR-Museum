@@ -102,6 +102,6 @@ public class UIManager : MonoBehaviour
     {
         //Cambiar a ARScene
         BackgroundFX.instance.Pause();
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("ARScene");
     }
 }

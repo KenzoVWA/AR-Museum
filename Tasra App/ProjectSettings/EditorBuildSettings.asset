@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 4ea213ff141529745bd0f0972ff53db5
   - enabled: 1
-    path: Assets/Scenes/TestScene.unity
+    path: Assets/Scenes/ARScene.unity
     guid: cfca0f014f8aa8348be018de5de88da7
   - enabled: 1
     path: Assets/Scenes/MainScenePostAr.unity
