@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TestScript : MonoBehaviour
+public class ARCanvas : MonoBehaviour
 {
     public GameObject panel;
     public GameObject information;
