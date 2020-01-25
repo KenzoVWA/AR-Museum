@@ -25,6 +25,7 @@ public class SimpleCloudHandler : MonoBehaviour, IObjectRecoEventHandler
     public ImageTargetBehaviour ImageTargetBehaviour;
     public Text title;
     public Text description;
+    public AudioSource audioSource;
 
     [System.Serializable]
     public class AugmentationObject
@@ -34,6 +35,15 @@ public class SimpleCloudHandler : MonoBehaviour, IObjectRecoEventHandler
     }
 
     public AugmentationObject[] AugmentationObjects;
+
+    [System.Serializable]
+    public class SoundObject
+    {
+        public string targetName;
+        public AudioClip sound;
+    }
+
+    public SoundObject[] SoundObjects; 
 
     #endregion
 
@@ -127,6 +137,14 @@ public class SimpleCloudHandler : MonoBehaviour, IObjectRecoEventHandler
             }
         }
 
+        for (int i = 0; i < SoundObjects.Length; i++)
+        {
+            if(SoundObjects[i].targetName == mTargetName)
+            {
+                audioSource.clip = SoundObjects[i].sound;
+            }
+        }
+
         title.text = mTargetName;
 
         if (UIManager.instance.isEnglish)
@@ -143,6 +161,16 @@ public class SimpleCloudHandler : MonoBehaviour, IObjectRecoEventHandler
             // stop the target finder
             mCloudRecoBehaviour.CloudRecoEnabled = true;
         }
+    }
+
+    public void PlayAudio()
+    {
+        audioSource.Play();
+    }
+
+    public void StopAudio()
+    {
+        audioSource.Stop();
     }
 
 
