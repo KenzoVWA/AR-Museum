@@ -8,6 +8,7 @@ Confidential and Proprietary - Protected under copyright and other laws.
 
 using UnityEngine;
 using Vuforia;
+using UnityEngine.Events;
 
 /// <summary>
 /// A custom handler that implements the ITrackableEventHandler interface.
@@ -22,6 +23,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     protected TrackableBehaviour mTrackableBehaviour;
     protected TrackableBehaviour.Status m_PreviousStatus;
     protected TrackableBehaviour.Status m_NewStatus;
+    public UnityEvent onTrack;
+    public UnityEvent onLost;
 
     #endregion // PROTECTED_MEMBER_VARIABLES
 
@@ -63,11 +66,13 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             newStatus == TrackableBehaviour.Status.TRACKED ||
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
+            onTrack.Invoke();
             OnTrackingFound();
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED &&
                  newStatus == TrackableBehaviour.Status.NO_POSE)
         {
+            onLost.Invoke();
             OnTrackingLost();
         }
         else
@@ -75,6 +80,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             // For combo of previousStatus=UNKNOWN + newStatus=UNKNOWN|NOT_FOUND
             // Vuforia is starting, but tracking has not been lost or found yet
             // Call OnTrackingLost() to hide the augmentations
+            onLost.Invoke();
             OnTrackingLost();
         }
     }
