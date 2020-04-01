@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class UIManagerPostAR : MonoBehaviour
 {
     public RectTransform languageMenu, menuPrincipal, mainMenu,
-            instruccionesMenu, instructionsMenu, obrasMenu, artworksMenu;
+            instruccionesMenu, instructionsMenu, obrasMenu, artworksMenu, curatorialEsp, curatorialEng;
 
     public static UIManagerPostAR instance;
 
@@ -42,7 +42,7 @@ public class UIManagerPostAR : MonoBehaviour
 
     public void StartItem()
     {
-        mainMenu.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
+        curatorialEng.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
         artworksMenu.DOAnchorPos(new Vector2(0, 0), 0.25f);
     }
 
@@ -61,7 +61,7 @@ public class UIManagerPostAR : MonoBehaviour
 
     public void Empezar()
     {
-        menuPrincipal.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
+        curatorialEsp.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
         obrasMenu.DOAnchorPos(new Vector2(0, 0), 0.25f);
     }
 
@@ -92,14 +92,38 @@ public class UIManagerPostAR : MonoBehaviour
 
     public void BackToMain()
     {
-        artworksMenu.DOAnchorPos(new Vector2(3100, 0), 0.25f);
+        curatorialEng.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
         mainMenu.DOAnchorPos(new Vector2(0, 0), 0.25f);
     }
 
     public void VolverPrincipal()
     {
-        obrasMenu.DOAnchorPos(new Vector2(3100, 0), 0.25f);
+        curatorialEsp.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
         menuPrincipal.DOAnchorPos(new Vector2(0, 0), 0.25f);
+    }
+
+    public void showCuratorialEsp()
+    {
+        menuPrincipal.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
+        curatorialEsp.DOAnchorPos(new Vector2(0, 0), 0.25f);
+    }
+
+    public void showCuratorialEng()
+    {
+        mainMenu.DOAnchorPos(new Vector2(-3100, 0), 0.25f);
+        curatorialEng.DOAnchorPos(new Vector2(0, 0), 0.25f);
+    }
+
+    public void backToCuratorial()
+    {
+        artworksMenu.DOAnchorPos(new Vector2(3100, 0), 0.25f);
+        curatorialEng.DOAnchorPos(new Vector2(0, 0), 0.25f);
+    }
+
+    public void volverACuratorial()
+    {
+        obrasMenu.DOAnchorPos(new Vector2(3100, 0), 0.25f);
+        curatorialEsp.DOAnchorPos(new Vector2(0, 0), 0.25f);
     }
 
     public void AR()
