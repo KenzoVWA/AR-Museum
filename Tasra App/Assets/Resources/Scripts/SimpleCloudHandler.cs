@@ -98,12 +98,15 @@ public class SimpleCloudHandler : MonoBehaviour, IObjectRecoEventHandler
     /// </summary>
     public void OnStateChanged(bool scanning)
     {
+
         mIsScanning = scanning;
         if (scanning)
         {
             // clear all known trackables
+
             ObjectTracker tracker = TrackerManager.Instance.GetTracker<ObjectTracker>();
             tracker.GetTargetFinder<ImageTargetFinder>().ClearTrackables(false);
+
         }
     }
 
@@ -114,14 +117,17 @@ public class SimpleCloudHandler : MonoBehaviour, IObjectRecoEventHandler
     /// <param name="targetSearchResult"></param>
     public void OnNewSearchResult(TargetFinder.TargetSearchResult targetSearchResult)
     {
+
         TargetFinder.CloudRecoSearchResult cloudRecoSearchResult = (TargetFinder.CloudRecoSearchResult)targetSearchResult;
 
         // duplicate the referenced image target
         newImageTarget = Instantiate(ImageTargetTemplate.gameObject) as GameObject;
         GameObject augmentation = null;
 
-        if (augmentation != null)
-            augmentation.transform.parent = newImageTarget.transform;
+        if (augmentation != null) { 
+        augmentation.transform.parent = newImageTarget.transform;
+           
+        }
 
         // enable the new result with the same ImageTargetBehaviour:
         ImageTargetBehaviour = (ImageTargetBehaviour)mImageTracker.GetTargetFinder<ImageTargetFinder>().EnableTracking(targetSearchResult, newImageTarget);
@@ -171,6 +177,12 @@ public class SimpleCloudHandler : MonoBehaviour, IObjectRecoEventHandler
     public void StopAudio()
     {
         audioSource.Stop();
+    }
+
+    public void ClearInfo()
+    {
+        title.text = "";
+        description.text = "";
     }
 
 
