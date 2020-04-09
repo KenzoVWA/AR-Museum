@@ -100,10 +100,10 @@ public class SimpleCloudHandler : MonoBehaviour, IObjectRecoEventHandler
     {
 
         mIsScanning = scanning;
+
         if (scanning)
         {
             // clear all known trackables
-
             ObjectTracker tracker = TrackerManager.Instance.GetTracker<ObjectTracker>();
             tracker.GetTargetFinder<ImageTargetFinder>().ClearTrackables(false);
 
@@ -151,16 +151,7 @@ public class SimpleCloudHandler : MonoBehaviour, IObjectRecoEventHandler
             }
         }
 
-        title.text = mTargetName;
-
-        if (UIManager.instance.isEnglish)
-        {
-            description.text = mTargetMetadata.Substring(0, mTargetMetadata.IndexOf('~'));
-        }
-        else
-        {
-            description.text = mTargetMetadata.Substring(mTargetMetadata.IndexOf('~') + 1);
-        }
+        SetInfo();
 
         if (!mIsScanning)
         {
@@ -177,6 +168,20 @@ public class SimpleCloudHandler : MonoBehaviour, IObjectRecoEventHandler
     public void StopAudio()
     {
         audioSource.Stop();
+    }
+
+    public void SetInfo()
+    {
+        title.text = mTargetName;
+
+        if (UIManager.instance.isEnglish)
+        {
+            description.text = mTargetMetadata.Substring(0, mTargetMetadata.IndexOf('~'));
+        }
+        else
+        {
+            description.text = mTargetMetadata.Substring(mTargetMetadata.IndexOf('~') + 1);
+        }
     }
 
     public void ClearInfo()
