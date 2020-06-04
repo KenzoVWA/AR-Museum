@@ -24,7 +24,7 @@ public class SimpleCloudHandler : MonoBehaviour, IObjectRecoEventHandler
     public ImageTargetBehaviour ImageTargetTemplate;
     public ImageTargetBehaviour ImageTargetBehaviour;
     public Text title;
-    public Text description;
+    public TMPro.TextMeshProUGUI description;
     public AudioSource audioSource;
 
     [System.Serializable]
